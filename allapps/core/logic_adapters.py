@@ -9,14 +9,22 @@ class MyLogicAdapter(LogicAdapter):
         return True
 
     def process(self, input_statement, additional_response_selection_parameters):
-        import random
+        import requests
+        from chatterbot.conversation import Statement
 
-        # Randomly select a confidence between 0 and 1
-        confidence = random.uniform(0, 1)
+        # Make a request to the Air Quality API
+        response = requests.get(
+            "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=19.07&longitude=72.88",
+        )
+        data = response.json()
 
-        # For this example, we will just return the input as output
-        selected_statement = input_statement
-        selected_statement.confidence = confidence
-        selected_statement = selected_statement
+        # Let's base the confidence value on if the request was successful
+        # if response.status_code == 200:
+        #     confidence = 1
+        # else:
+        #     confidence = 0
 
-        return selected_statement
+        # latitude = data.get("latitude", "unavailable")
+
+        response_statement = Statement(text=f"The current latitude is {data}")
+        return response_statement

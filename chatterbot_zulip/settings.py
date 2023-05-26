@@ -125,11 +125,11 @@ STATIC_URL = "/static/"
 CHATTERBOT = {
     "name": "Django ChatterBot Example",
     "django_app_name": "django_chatterbot",
-    # "logic_adapters": [
-    #     {
-    #         "import_path": "allapps.core.logic_adapters.MyLogicAdapter",
-    #         "statement_comparison_function": "my_custom_comparison_function",
-    #         "response_selection_method": "my_custom_selection_method",
-    #     },
-    # ],
+    "logic_adapters": [
+        {
+            "import_path": "allapps.core.logic_adapters.MyLogicAdapter",
+            # "statement_comparison_function": "my_custom_comparison_function",
+            # "response_selection_method": "my_custom_selection_method",
+        },
+    ],
 }

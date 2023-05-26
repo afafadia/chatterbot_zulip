@@ -2,7 +2,6 @@ import json
 
 from chatterbot import ChatBot
 from chatterbot.ext.django_chatterbot import settings
-from chatterbot.trainers import ChatterBotCorpusTrainer
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
@@ -23,10 +22,6 @@ class ChatterBotApiView(View):
     """
 
     chatterbot = ChatBot(**settings.CHATTERBOT)
-    trainer = ChatterBotCorpusTrainer(chatterbot)
-    trainer.train(
-        "chatterbot.corpus.hindi",  # venv/lib/python3.8/site-packages/chatterbot_corpus/data/hindi
-    )
 
     def post(self, request, *args, **kwargs):
         """
