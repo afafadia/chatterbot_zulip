@@ -14,9 +14,11 @@ class MyLogicAdapter(LogicAdapter):
 
         # Make a request to the Air Quality API
         response = requests.get(
-            "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=19.07&longitude=72.88",
+            # "https://docs.patentaware.com/api/documents/?collection=Documents&q=intel&page=1&format=json",
+            "http://50.211.199.147:8000/api/documents/?collection=Documents&q=intel&page=1&format=json"
         )
         data = response.json()
+        # print(data)
 
         # Let's base the confidence value on if the request was successful
         # if response.status_code == 200:
